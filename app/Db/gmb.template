@@ -4,8 +4,8 @@
 #     N   - Device index
 
 #record(longin, $(DEV):NUM_CHANNELS)
-#{       
+#{
 #        field(DTYP, "asynInt32")
-#        field(INP,  "@asyn(GMB$(N)_region,$(OFFSET))UINT16")
+#        field(INP,  "@asyn(GMB$(N)_region,$(OFFSET=0))UINT16")
 #        field(SCAN, "5 second")
 #}

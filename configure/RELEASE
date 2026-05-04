@@ -6,12 +6,12 @@ include $(TOP)/RELEASE_SITE
 # Define the version of modules needed by
 # IOC apps or other Support apps
 # ===============================================================
-ASYN_MODULE_VERSION                 = R4.39-0.0.1
-AUTOSAVE_MODULE_VERSION             = R5.8-2.1.0
-CALC_MODULE_VERSION                 = R3.7-1.0.1
-IOCADMIN_MODULE_VERSION             = R3.1.16-1.1.0
-MODBUS_MODULE_VERSION	            = R3.0.0-0.2.1
-CAPUTLOG_MODULE_VERSION             = R3.5-1.0.0
+ASYN_MODULE_VERSION = R4.42-1.0.0
+AUTOSAVE_MODULE_VERSION = R5.11-2.1.1
+CALC_MODULE_VERSION = R3.7-1.0.1
+IOCADMIN_MODULE_VERSION = R3.1.16-1.4.0
+MODBUS_MODULE_VERSION = R3.2-1.0.3
+CAPUTLOG_MODULE_VERSION = R4.0-1.0.0
 
 # ============================================================
 # External Support module path definitions

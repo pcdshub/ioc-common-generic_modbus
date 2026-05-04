@@ -48,13 +48,13 @@ dbLoadRecords( "db/iocSoft.db",            "IOC=$(IOC_PV)" )
 dbLoadRecords( "db/save_restoreStatus.db", "P=$(IOC_PV):" )
 $$LOOP(GMB)
 dbLoadRecords( "db/gmb.db",       "DEV=$$BASE,N=$$(INDEX)" )
-dbLoadRecords( "db/asynRecord.db", "P=$$BASE:,R=asyn,PORT=GMB$$INDEX")
+dbLoadRecords( "db/asynRecord.db", "P=$$BASE:,R=asyn,PORT=GMB$$INDEX,ADDR=0,OMAX=80,IMAX=80")
 $$ENDLOOP(GMB)
 
 # Setup autosave
 set_savefile_path( "$(IOC_DATA)/$(IOC)/autosave")
 set_requestfile_path( "$(TOP)/autosave")
-save_restoreSet_status_prefix( "$(IOC_PV)" )
+save_restoreSet_status_prefix( "$(IOC_PV):" )
 save_restoreSet_IncompleteSetsOk( 1 )
 save_restoreSet_DatedBackupFiles( 1 )
 
