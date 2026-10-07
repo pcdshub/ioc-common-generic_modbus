@@ -7,6 +7,7 @@ epicsEnvSet( "IOC_PV",    "$$IOC_PV"   )
 epicsEnvSet( "LOCATION",  "$$IF(LOCATION,$$LOCATION,$$IOC_PV)")
 epicsEnvSet( "IOCTOP",    "$$IOCTOP"   )
 epicsEnvSet( "TOP",       "$$TOP"      )
+epicsEnvSet( "ACF_FILE",  "$(IOCTOP)/iocBoot/templates/unrestricted.acf" )
 epicsEnvSet( "MB_TCP",    "0"          )
 epicsEnvSet( "MB_RTU",    "1"          )
 epicsEnvSet( "MB_ASCII",  "2"          )
@@ -62,8 +63,22 @@ save_restoreSet_DatedBackupFiles( 1 )
 set_pass0_restoreFile( "$(IOC).sav" )
 set_pass1_restoreFile( "$(IOC).sav" )
 
+# Configure access security: this is required for caPutLog.
+asSetFilename("$(ACF_FILE)")
+
 # Initialize the IOC and start processing records
 iocInit()
+
+# Enable logging
+iocLogInit()
+
+# caPutLogInit("HOST:PORT", config)
+# config options:
+#       caPutLogNone       -1: no logging (disable)
+#       caPutLogOnChange    0: log only on value change
+#       caPutLogAll         1: log all puts
+#       caPutLogAllNoFilter 2: log all puts no filtering on same PV
+caPutLogInit("${EPICS_CAPUTLOG_HOST}:${EPICS_CAPUTLOG_PORT}", 0)
 
 # Start autosave backups
 create_monitor_set( "$(IOC).req", 5, "" )
